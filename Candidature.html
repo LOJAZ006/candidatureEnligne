@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Formulaire de candidature internationale pour les étudiants burundais">
+
+    <title>
+        Candidature internationale | Burundi Global Students
+    </title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #7c3aed;
+            --dark: #111827;
+            --text: #374151;
+            --muted: #6b7280;
+            --background: #f4f6fb;
+            --white: #fff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: var(--background);
+            color: var(--text);
+        }
+
+        .header {
+            background: linear-gradient(
+                135deg,
+                #312e81,
+                #4f46e5,
+                #7c3aed
+            );
+
+            color: #fff;
+            padding: 32px 20px 75px;
+        }
+
+        .header-content {
+            max-width: 1050px;
+            margin: auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            font-size: 13px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,.15);
+            border-radius: 12px;
+        }
+
+        .header h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            max-width: 650px;
+            color: rgba(255,255,255,.82);
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: -45px auto 50px;
+            padding: 0 18px;
+        }
+
+        .application-card {
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 15px 45px rgba(15,23,42,.08);
+            overflow: hidden;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step {
+            padding: 17px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            color: #9ca3af;
+            font-size: 12px;
+            font-weight: 700;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            background: none;
+            user-select: none;
+        }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f1f5;
+            border-radius: 50%;
+        }
+
+        .step.active {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .step.active .step-number {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .step.completed .step-number {
+            background: var(--success);
+            color: #fff;
+        }
+
+        .form-content {
+            padding: 35px;
+        }
+
+        .section {
+            display: none;
+            padding: 25px 0 45px;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .section-number {
+            min-width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #eef2ff;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .section-header h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 21px;
+            color: var(--dark);
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        label span {
+            color: var(--danger);
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+            background: #fff;
+            transition: .2s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79,70,229,.10);
+        }
+
+        select:disabled {
+            background: #f3f4f6;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #9ca3af;
+            flex: none;
+        }
+
+        .status-dot.loading {
+            background: var(--warning);
+            animation: pulse 1s infinite;
+        }
+
+        .status-dot.success {
+            background: var(--success);
+        }
+
+        .status-dot.error {
+            background: var(--danger);
+        }
+
+        @keyframes pulse {
+            50% {
+                opacity: .3;
+            }
+        }
+
+        .file-box {
+            padding: 15px;
+            border: 1px dashed #cfd3df;
+            border-radius: 10px;
+            background: #fafbff;
+        }
+
+        .file-box input {
+            padding: 0;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            gap: 10px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 12px 19px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #f0f1f5;
+            color: #374151;
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: #fff;
+        }
+
+        .accept {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .accept input {
+            width: auto;
+        }
+
+        .success {
+            display: none;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .success.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+            margin: auto auto 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #dcfce7;
+            color: #059669;
+            font-size: 30px;
+        }
+
+        .success h2 {
+            font-family: "Poppins", sans-serif;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .success p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 10px;
+            margin-top: 20px;
+        }
+
+        @media(max-width:700px) {
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full {
+                grid-column: auto;
+            }
+
+            .form-content {
+                padding: 22px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .step span:not(.step-number) {
+                display: none;
+            }
+
+            .step {
+                padding: 14px 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="header-content">
+
+        <div class="brand">
+            <div class="brand-icon">🎓</div>
+            BURUNDI GLOBAL STUDENTS
+        </div>
+
+        <h1>Candidature Internationale</h1>
+
+        <p>
+            Candidatez pour poursuivre vos études dans
+            l'université de votre choix à travers le monde.
+        </p>
+
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <div class="application-card">
+
+        <!-- ================= ÉTAPES ================= -->
+
+        <div class="steps" id="steps">
+
+            <button
+                type="button"
+                class="step active"
+                data-step="1">
+
+                <span class="step-number">01</span>
+                <span>Identité</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="step"
+                data-step="2">
+
+                <span class="step-number">02</span>
+                <span>Destination</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="step"
+                data-step="3">
+
+                <span class="step-number">03</span>
+                <span>Études</span>
+
+            </button>
+
+
+            <button
+                type="button"
+                class="step"
+                data-step="4">
+
+                <span class="step-number">04</span>
+                <span>Documents</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= FORMULAIRE ================= -->
+
+        <form
+            class="form-content"
+            id="applicationForm"
+            novalidate>
+
+
+            <!-- ================================================= -->
+            <!-- 01 IDENTITÉ -->
+            <!-- ================================================= -->
+
+            <section
+                class="section active"
+                data-section="1">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Informations personnelles
+                        </h2>
+
+                        <p>
+                            Informations sur le candidat.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid">
+
+                    <div class="field">
+
+                        <label>
+                            Nom <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            name="nom"
+                            required>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Prénom <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            name="prenom"
+                            required>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Date de naissance <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            name="naissance"
+                            required>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Sexe <span>*</span>
+                        </label>
+
+                        <select
+                            name="sexe"
+                            required>
+
+                            <option value="">
+                                Sélectionner
+                            </option>
+
+                            <option value="Masculin">
+                                Masculin
+                            </option>
+
+                            <option value="Féminin">
+                                Féminin
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Adresse e-mail <span>*</span>
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="nom@email.com"
+                            autocomplete="email"
+                            required>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Téléphone <span>*</span>
+                        </label>
+
+                        <input
+                            type="tel"
+                            name="telephone"
+                            placeholder="+257..."
+                            required>
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>
+                            Adresse actuelle
+                        </label>
+
+                        <input
+                            type="text"
+                            name="adresse">
+
+                    </div>
+
+                </div>
+
+
+                <div class="actions">
+
+                    <span></span>
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-next="2">
+
+                        Continuer →
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- 02 DESTINATION -->
+            <!-- ================================================= -->
+
+            <section
+                class="section"
+                data-section="2">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Destination universitaire
+                        </h2>
+
+                        <p>
+                            Choisissez votre continent, votre pays
+                            et votre université.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid">
+
+
+                    <!-- CONTINENT -->
+
+                    <div class="field">
+
+                        <label>
+                            Continent <span>*</span>
+                        </label>
+
+                        <select
+                            id="continent"
+                            name="continent"
+                            required>
+
+                            <option value="">
+                                Chargement...
+                            </option>
+
+                        </select>
+
+                        <div class="api-status">
+
+                            <span
+                                class="status-dot loading"
+                                id="dotCountries">
+                            </span>
+
+                            <span id="msgCountries">
+                                Chargement de la liste des pays...
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAYS -->
+
+                    <div class="field">
+
+                        <label>
+                            Pays <span>*</span>
+                        </label>
+
+                        <select
+                            id="pays"
+                            name="pays"
+                            required
+                            disabled>
+
+                            <option value="">
+                                Choisissez d'abord un continent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- UNIVERSITÉ -->
+
+                    <div class="field full">
+
+                        <label>
+                            Université <span>*</span>
+                        </label>
+
+                        <select
+                            id="universite"
+                            name="universite"
+                            required
+                            disabled>
+
+                            <option value="">
+                                Choisissez d'abord un pays
+                            </option>
+
+                        </select>
+
+                        <div class="api-status">
+
+                            <span
+                                class="status-dot"
+                                id="dotUnis">
+                            </span>
+
+                            <span id="msgUnis">
+                                En attente de la sélection du pays
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-prev="1">
+
+                        ← Retour
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-next="3">
+
+                        Continuer →
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- 03 ÉTUDES -->
+            <!-- ================================================= -->
+
+            <section
+                class="section"
+                data-section="3">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Parcours académique
+                        </h2>
+
+                        <p>
+                            Votre parcours et votre projet d'études.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid">
+
+
+                    <div class="field">
+
+                        <label>
+                            Niveau d'études <span>*</span>
+                        </label>
+
+                        <select
+                            name="niveau"
+                            required>
+
+                            <option value="">
+                                Sélectionner
+                            </option>
+
+                            <option>
+                                Diplôme d'État
+                            </option>
+
+                            <option>
+                                Baccalauréat
+                            </option>
+
+                            <option>
+                                Licence / Bachelor
+                            </option>
+
+                            <option>
+                                Master
+                            </option>
+
+                            <option>
+                                Doctorat / PhD
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Domaine d'études <span>*</span>
+                        </label>
+
+                        <select
+                            name="domaine"
+                            required>
+
+                            <option value="">
+                                Sélectionner
+                            </option>
+
+                            <option>Informatique</option>
+                            <option>Génie Logiciel</option>
+                            <option>Intelligence Artificielle</option>
+                            <option>Cybersécurité</option>
+                            <option>Réseaux et Télécommunications</option>
+                            <option>Médecine</option>
+                            <option>Ingénierie</option>
+                            <option>Droit</option>
+                            <option>Économie</option>
+                            <option>Business et Management</option>
+                            <option>Sciences</option>
+                            <option>Agriculture</option>
+                            <option>Architecture</option>
+                            <option>Communication</option>
+                            <option>Éducation</option>
+                            <option>Arts et Design</option>
+                            <option>Autre</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Année académique <span>*</span>
+                        </label>
+
+                        <select
+                            name="annee"
+                            required>
+
+                            <option value="">
+                                Sélectionner
+                            </option>
+
+                            <option>
+                                2026 - 2027
+                            </option>
+
+                            <option>
+                                2027 - 2028
+                            </option>
+
+                            <option>
+                                2028 - 2029
+                            </option>
+
+                            <option>
+                                2029 - 2030
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Mode de financement
+                        </label>
+
+                        <select name="financement">
+
+                            <option>
+                                Bourse complète
+                            </option>
+
+                            <option>
+                                Bourse partielle
+                            </option>
+
+                            <option>
+                                Financement personnel
+                            </option>
+
+                            <option>
+                                Famille / Sponsor
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="field full">
+
+                        <label>
+                            Motivation
+                        </label>
+
+                        <textarea
+                            name="motivation"
+                            placeholder="Expliquez brièvement votre projet d'études...">
+                        </textarea>
+
+                    </div>
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-prev="2">
+
+                        ← Retour
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-next="4">
+
+                        Continuer →
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================================================= -->
+            <!-- 04 DOCUMENTS -->
+            <!-- ================================================= -->
+
+            <section
+                class="section"
+                data-section="4">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Documents et validation
+                        </h2>
+
+                        <p>
+                            Ajoutez les documents nécessaires.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="grid">
+
+
+                    <div class="field">
+
+                        <label>
+                            CV <span>*</span>
+                        </label>
+
+                        <div class="file-box">
+
+                            <input
+                                type="file"
+                                name="cv"
+                                accept=".pdf,.doc,.docx"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Diplôme / Attestation
+                        </label>
+
+                        <div class="file-box">
+
+                            <input
+                                type="file"
+                                name="diplome"
+                                accept=".pdf,.jpg,.jpeg,.png">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Relevés de notes
+                        </label>
+
+                        <div class="file-box">
+
+                            <input
+                                type="file"
+                                name="notes"
+                                accept=".pdf,.jpg,.jpeg,.png">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label>
+                            Photo d'identité
+                        </label>
+
+                        <div class="file-box">
+
+                            <input
+                                type="file"
+                                name="photo"
+                                accept="image/*">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <label class="accept">
+
+                    <input
+                        type="checkbox"
+                        id="accept"
+                        required>
+
+                    J'accepte que mes informations soient utilisées
+                    pour le traitement de ma candidature.
+
+                    <span style="color:var(--danger)">
+                        *
+                    </span>
+
+                </label>
+
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-prev="3">
+
+                        ← Retour
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+
+                        🚀 Soumettre ma candidature
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </form>
+
+
+        <!-- ================================================= -->
+        <!-- MESSAGE DE SUCCÈS -->
+        <!-- ================================================= -->
+
+        <div
+            class="success"
+            id="successBox">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Candidature envoyée
+            </h2>
+
+            <p>
+
+                Merci
+                <strong id="successName"></strong>.
+
+                <br>
+
+                Votre candidature a été correctement enregistrée.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        © 2026 Burundi Global Students
+    </div>
+
+</div>
+
+
+<script>
+
+(function () {
+
+    "use strict";
+
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    var current = 1;
+
+    var sections =
+        document.querySelectorAll(".section");
+
+    var steps =
+        document.querySelectorAll(".step");
+
+
+    function goTo(n) {
+
+        current = n;
+
+        sections.forEach(function (section) {
+
+            section.classList.toggle(
+                "active",
+                Number(section.dataset.section) === n
+            );
+
+        });
+
+
+        steps.forEach(function (step) {
+
+            var number =
+                Number(step.dataset.step);
+
+            step.classList.toggle(
+                "active",
+                number === n
+            );
+
+            step.classList.toggle(
+                "completed",
+                number < n
+            );
+
+        });
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    }
+
+
+    function validateStep(n) {
+
+        var section =
+            document.querySelector(
+                '.section[data-section="' + n + '"]'
+            );
+
+        if (!section) {
+            return false;
+        }
+
+
+        var fields =
+            section.querySelectorAll("[required]");
+
+
+        for (var i = 0; i < fields.length; i++) {
+
+            var field = fields[i];
+
+
+            if (
+                field.type === "checkbox" &&
+                !field.checked
+            ) {
+
+                field.focus();
+
+                if (field.reportValidity) {
+                    field.reportValidity();
+                }
+
+                return false;
+            }
+
+
+            if (
+                field.type !== "checkbox" &&
+                !field.value
+            ) {
+
+                field.focus();
+
+                if (field.reportValidity) {
+                    field.reportValidity();
+                }
+
+                return false;
+            }
+
+        }
+
+
+        return true;
+
+    }
+
+
+    document.addEventListener(
+        "click",
+        function (e) {
+
+            var next =
+                e.target.closest("[data-next]");
+
+            var prev =
+                e.target.closest("[data-prev]");
+
+            var step =
+                e.target.closest(".step");
+
+
+            if (next) {
+
+                if (validateStep(current)) {
+
+                    goTo(
+                        Number(next.dataset.next)
+                    );
+
+                }
+
+                return;
+
+            }
+
+
+            if (prev) {
+
+                goTo(
+                    Number(prev.dataset.prev)
+                );
+
+                return;
+
+            }
+
+
+            if (step) {
+
+                var target =
+                    Number(step.dataset.step);
+
+
+                if (
+                    target <= current ||
+                    validateStep(current)
+                ) {
+
+                    goTo(target);
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       ÉLÉMENTS
+    ========================================================= */
+
+    var continentSel =
+        document.getElementById("continent");
+
+    var paysSel =
+        document.getElementById("pays");
+
+    var uniSel =
+        document.getElementById("universite");
+
+
+    var dotC =
+        document.getElementById("dotCountries");
+
+    var msgC =
+        document.getElementById("msgCountries");
+
+
+    var dotU =
+        document.getElementById("dotUnis");
+
+    var msgU =
+        document.getElementById("msgUnis");
+
+
+    function status(dot, msg, state, text) {
+
+        dot.className =
+            "status-dot" +
+            (state ? " " + state : "");
+
+        msg.textContent = text;
+
+    }
+
+
+    function fill(select, items, placeholder) {
+
+        select.innerHTML = "";
+
+
+        var option =
+            document.createElement("option");
+
+        option.value = "";
+
+        option.textContent =
+            placeholder;
+
+        select.appendChild(option);
+
+
+        items.forEach(function (item) {
+
+            var option =
+                document.createElement("option");
+
+            option.value =
+                item.value;
+
+            option.textContent =
+                item.label;
+
+            select.appendChild(option);
+
+        });
+
+    }
+
+
+    /* =========================================================
+       195 PAYS DU MONDE
+    ========================================================= */
+
+    var COUNTRIES = [
+
+        /* AFRIQUE */
+
+        {name:"Afrique du Sud", code:"ZA", continent:"Afrique"},
+        {name:"Algérie", code:"DZ", continent:"Afrique"},
+        {name:"Angola", code:"AO", continent:"Afrique"},
+        {name:"Bénin", code:"BJ", continent:"Afrique"},
+        {name:"Botswana", code:"BW", continent:"Afrique"},
+        {name:"Burkina Faso", code:"BF", continent:"Afrique"},
+        {name:"Burundi", code:"BI", continent:"Afrique"},
+        {name:"Cabo Verde", code:"CV", continent:"Afrique"},
+        {name:"Cameroun", code:"CM", continent:"Afrique"},
+        {name:"Comores", code:"KM", continent:"Afrique"},
+        {name:"Congo", code:"CG", continent:"Afrique"},
+        {name:"Côte d'Ivoire", code:"CI", continent:"Afrique"},
+        {name:"Djibouti", code:"DJ", continent:"Afrique"},
+        {name:"Égypte", code:"EG", continent:"Afrique"},
+        {name:"Érythrée", code:"ER", continent:"Afrique"},
+        {name:"Eswatini", code:"SZ", continent:"Afrique"},
+        {name:"Éthiopie", code:"ET", continent:"Afrique"},
+        {name:"Gabon", code:"GA", continent:"Afrique"},
+        {name:"Gambie", code:"GM", continent:"Afrique"},
+        {name:"Ghana", code:"GH", continent:"Afrique"},
+        {name:"Guinée", code:"GN", continent:"Afrique"},
+        {name:"Guinée-Bissau", code:"GW", continent:"Afrique"},
+        {name:"Guinée équatoriale", code:"GQ", continent:"Afrique"},
+        {name:"Kenya", code:"KE", continent:"Afrique"},
+        {name:"Lesotho", code:"LS", continent:"Afrique"},
+        {name:"Liberia", code:"LR", continent:"Afrique"},
+        {name:"Libye", code:"LY", continent:"Afrique"},
+        {name:"Madagascar", code:"MG", continent:"Afrique"},
+        {name:"Malawi", code:"MW", continent:"Afrique"},
+        {name:"Mali", code:"ML", continent:"Afrique"},
+        {name:"Maroc", code:"MA", continent:"Afrique"},
+        {name:"Maurice", code:"MU", continent:"Afrique"},
+        {name:"Mauritanie", code:"MR", continent:"Afrique"},
+        {name:"Mozambique", code:"MZ", continent:"Afrique"},
+        {name:"Namibie", code:"NA", continent:"Afrique"},
+        {name:"Niger", code:"NE", continent:"Afrique"},
+        {name:"Nigeria", code:"NG", continent:"Afrique"},
+        {name:"Ouganda", code:"UG", continent:"Afrique"},
+        {name:"République centrafricaine", code:"CF", continent:"Afrique"},
+        {name:"République démocratique du Congo", code:"CD", continent:"Afrique"},
+        {name:"Rwanda", code:"RW", continent:"Afrique"},
+        {name:"Sao Tomé-et-Principe", code:"ST", continent:"Afrique"},
+        {name:"Sénégal", code:"SN", continent:"Afrique"},
+        {name:"Seychelles", code:"SC", continent:"Afrique"},
+        {name:"Sierra Leone", code:"SL", continent:"Afrique"},
+        {name:"Somalie", code:"SO", continent:"Afrique"},
+        {name:"Soudan", code:"SD", continent:"Afrique"},
+        {name:"Soudan du Sud", code:"SS", continent:"Afrique"},
+        {name:"Tanzanie", code:"TZ", continent:"Afrique"},
+        {name:"Tchad", code:"TD", continent:"Afrique"},
+        {name:"Togo", code:"TG", continent:"Afrique"},
+        {name:"Tunisie", code:"TN", continent:"Afrique"},
+        {name:"Zambie", code:"ZM", continent:"Afrique"},
+        {name:"Zimbabwe", code:"ZW", continent:"Afrique"},
+
+
+        /* AMÉRIQUE DU NORD */
+
+        {name:"Antigua-et-Barbuda", code:"AG", continent:"Amérique du Nord"},
+        {name:"Bahamas", code:"BS", continent:"Amérique du Nord"},
+        {name:"Barbade", code:"BB", continent:"Amérique du Nord"},
+        {name:"Belize", code:"BZ", continent:"Amérique du Nord"},
+        {name:"Canada", code:"CA", continent:"Amérique du Nord"},
+        {name:"Costa Rica", code:"CR", continent:"Amérique du Nord"},
+        {name:"Cuba", code:"CU", continent:"Amérique du Nord"},
+        {name:"Dominique", code:"DM", continent:"Amérique du Nord"},
+        {name:"El Salvador", code:"SV", continent:"Amérique du Nord"},
+        {name:"États-Unis", code:"US", continent:"Amérique du Nord"},
+        {name:"Grenade", code:"GD", continent:"Amérique du Nord"},
+        {name:"Guatemala", code:"GT", continent:"Amérique du Nord"},
+        {name:"Haïti", code:"HT", continent:"Amérique du Nord"},
+        {name:"Honduras", code:"HN", continent:"Amérique du Nord"},
+        {name:"Jamaïque", code:"JM", continent:"Amérique du Nord"},
+        {name:"Mexique", code:"MX", continent:"Amérique du Nord"},
+        {name:"Nicaragua", code:"NI", continent:"Amérique du Nord"},
+        {name:"Panama", code:"PA", continent:"Amérique du Nord"},
+        {name:"République dominicaine", code:"DO", continent:"Amérique du Nord"},
+        {name:"Saint-Christophe-et-Niévès", code:"KN", continent:"Amérique du Nord"},
+        {name:"Sainte-Lucie", code:"LC", continent:"Amérique du Nord"},
+        {name:"Saint-Vincent-et-les-Grenadines", code:"VC", continent:"Amérique du Nord"},
+        {name:"Trinité-et-Tobago", code:"TT", continent:"Amérique du Nord"},
+
+
+        /* AMÉRIQUE DU SUD */
+
+        {name:"Argentine", code:"AR", continent:"Amérique du Sud"},
+        {name:"Bolivie", code:"BO", continent:"Amérique du Sud"},
+        {name:"Brésil", code:"BR", continent:"Amérique du Sud"},
+        {name:"Chili", code:"CL", continent:"Amérique du Sud"},
+        {name:"Colombie", code:"CO", continent:"Amérique du Sud"},
+        {name:"Équateur", code:"EC", continent:"Amérique du Sud"},
+        {name:"Guyana", code:"GY", continent:"Amérique du Sud"},
+        {name:"Paraguay", code:"PY", continent:"Amérique du Sud"},
+        {name:"Pérou", code:"PE", continent:"Amérique du Sud"},
+        {name:"Suriname", code:"SR", continent:"Amérique du Sud"},
+        {name:"Uruguay", code:"UY", continent:"Amérique du Sud"},
+        {name:"Venezuela", code:"VE", continent:"Amérique du Sud"},
+
+
+        /* EUROPE */
+
+        {name:"Albanie", code:"AL", continent:"Europe"},
+        {name:"Allemagne", code:"DE", continent:"Europe"},
+        {name:"Andorre", code:"AD", continent:"Europe"},
+        {name:"Autriche", code:"AT", continent:"Europe"},
+        {name:"Belgique", code:"BE", continent:"Europe"},
+        {name:"Biélorussie", code:"BY", continent:"Europe"},
+        {name:"Bosnie-Herzégovine", code:"BA", continent:"Europe"},
+        {name:"Bulgarie", code:"BG", continent:"Europe"},
+        {name:"Chypre", code:"CY", continent:"Europe"},
+        {name:"Croatie", code:"HR", continent:"Europe"},
+        {name:"Danemark", code:"DK", continent:"Europe"},
+        {name:"Espagne", code:"ES", continent:"Europe"},
+        {name:"Estonie", code:"EE", continent:"Europe"},
+        {name:"Finlande", code:"FI", continent:"Europe"},
+        {name:"France", code:"FR", continent:"Europe"},
+        {name:"Grèce", code:"GR", continent:"Europe"},
+        {name:"Hongrie", code:"HU", continent:"Europe"},
+        {name:"Irlande", code:"IE", continent:"Europe"},
+        {name:"Islande", code:"IS", continent:"Europe"},
+        {name:"Italie", code:"IT", continent:"Europe"},
+        {name:"Lettonie", code:"LV", continent:"Europe"},
+        {name:"Liechtenstein", code:"LI", continent:"Europe"},
+        {name:"Lituanie", code:"LT", continent:"Europe"},
+        {name:"Luxembourg", code:"LU", continent:"Europe"},
+        {name:"Macédoine du Nord", code:"MK", continent:"Europe"},
+        {name:"Malte", code:"MT", continent:"Europe"},
+        {name:"Moldavie", code:"MD", continent:"Europe"},
+        {name:"Monaco", code:"MC", continent:"Europe"},
+        {name:"Monténégro", code:"ME", continent:"Europe"},
+        {name:"Norvège", code:"NO", continent:"Europe"},
+        {name:"Pays-Bas", code:"NL", continent:"Europe"},
+        {name:"Pologne", code:"PL", continent:"Europe"},
+        {name:"Portugal", code:"PT", continent:"Europe"},
+        {name:"République tchèque", code:"CZ", continent:"Europe"},
+        {name:"Roumanie", code:"RO", continent:"Europe"},
+        {name:"Royaume-Uni", code:"GB", continent:"Europe"},
+        {name:"Russie", code:"RU", continent:"Europe"},
+        {name:"Saint-Marin", code:"SM", continent:"Europe"},
+        {name:"Serbie", code:"RS", continent:"Europe"},
+        {name:"Slovaquie", code:"SK", continent:"Europe"},
+        {name:"Slovénie", code:"SI", continent:"Europe"},
+        {name:"Suède", code:"SE", continent:"Europe"},
+        {name:"Suisse", code:"CH", continent:"Europe"},
+        {name:"Ukraine", code:"UA", continent:"Europe"},
+        {name:"Vatican", code:"VA", continent:"Europe"},
+
+
+        /* ASIE */
+
+        {name:"Afghanistan", code:"AF", continent:"Asie"},
+        {name:"Arabie saoudite", code:"SA", continent:"Asie"},
+        {name:"Arménie", code:"AM", continent:"Asie"},
+        {name:"Azerbaïdjan", code:"AZ", continent:"Asie"},
+        {name:"Bahreïn", code:"BH", continent:"Asie"},
+        {name:"Bangladesh", code:"BD", continent:"Asie"},
+        {name:"Bhoutan", code:"BT", continent:"Asie"},
+        {name:"Brunei", code:"BN", continent:"Asie"},
+        {name:"Cambodge", code:"KH", continent:"Asie"},
+        {name:"Chine", code:"CN", continent:"Asie"},
+        {name:"Corée du Nord", code:"KP", continent:"Asie"},
+        {name:"Corée du Sud", code:"KR", continent:"Asie"},
+        {name:"Émirats arabes unis", code:"AE", continent:"Asie"},
+        {name:"Géorgie", code:"GE", continent:"Asie"},
+        {name:"Inde", code:"IN", continent:"Asie"},
+        {name:"Indonésie", code:"ID", continent:"Asie"},
+        {name:"Irak", code:"IQ", continent:"Asie"},
+        {name:"Iran", code:"IR", continent:"Asie"},
+        {name:"Israël", code:"IL", continent:"Asie"},
+        {name:"Japon", code:"JP", continent:"Asie"},
+        {name:"Jordanie", code:"JO", continent:"Asie"},
+        {name:"Kazakhstan", code:"KZ", continent:"Asie"},
+        {name:"Kirghizistan", code:"KG", continent:"Asie"},
+        {name:"Koweït", code:"KW", continent:"Asie"},
+        {name:"Laos", code:"LA", continent:"Asie"},
+        {name:"Liban", code:"LB", continent:"Asie"},
+        {name:"Malaisie", code:"MY", continent:"Asie"},
+        {name:"Maldives", code:"MV", continent:"Asie"},
+        {name:"Mongolie", code:"MN", continent:"Asie"},
+        {name:"Myanmar", code:"MM", continent:"Asie"},
+        {name:"Népal", code:"NP", continent:"Asie"},
+        {name:"Oman", code:"OM", continent:"Asie"},
+        {name:"Ouzbékistan", code:"UZ", continent:"Asie"},
+        {name:"Pakistan", code:"PK", continent:"Asie"},
+        {name:"Palestine", code:"PS", continent:"Asie"},
+        {name:"Philippines", code:"PH", continent:"Asie"},
+        {name:"Qatar", code:"QA", continent:"Asie"},
+        {name:"Singapour", code:"SG", continent:"Asie"},
+        {name:"Sri Lanka", code:"LK", continent:"Asie"},
+        {name:"Syrie", code:"SY", continent:"Asie"},
+        {name:"Tadjikistan", code:"TJ", continent:"Asie"},
+        {name:"Taïwan", code:"TW", continent:"Asie"},
+        {name:"Thaïlande", code:"TH", continent:"Asie"},
+        {name:"Timor oriental", code:"TL", continent:"Asie"},
+        {name:"Turkménistan", code:"TM", continent:"Asie"},
+        {name:"Turquie", code:"TR", continent:"Asie"},
+        {name:"Viêt Nam", code:"VN", continent:"Asie"},
+        {name:"Yémen", code:"YE", continent:"Asie"},
+
+
+        /* OCÉANIE */
+
+        {name:"Australie", code:"AU", continent:"Océanie"},
+        {name:"Fidji", code:"FJ", continent:"Océanie"},
+        {name:"Kiribati", code:"KI", continent:"Océanie"},
+        {name:"Îles Marshall", code:"MH", continent:"Océanie"},
+        {name:"Micronésie", code:"FM", continent:"Océanie"},
+        {name:"Nauru", code:"NR", continent:"Océanie"},
+        {name:"Nouvelle-Zélande", code:"NZ", continent:"Océanie"},
+        {name:"Palaos", code:"PW", continent:"Océanie"},
+        {name:"Papouasie-Nouvelle-Guinée", code:"PG", continent:"Océanie"},
+        {name:"Samoa", code:"WS", continent:"Océanie"},
+        {name:"Îles Salomon", code:"SB", continent:"Océanie"},
+        {name:"Tonga", code:"TO", continent:"Océanie"},
+        {name:"Tuvalu", code:"TV", continent:"Océanie"},
+        {name:"Vanuatu", code:"VU", continent:"Océanie"}
+
+    ];
+
+
+    /* =========================================================
+       CONTINENTS
+    ========================================================= */
+
+    var continents = [
+
+        "Afrique",
+        "Amérique du Nord",
+        "Amérique du Sud",
+        "Asie",
+        "Europe",
+        "Océanie"
+
+    ];
+
+
+    /* =========================================================
+       AFFICHER LES CONTINENTS
+    ========================================================= */
+
+    function renderContinents() {
+
+        fill(
+            continentSel,
+
+            continents.map(function (continent) {
+
+                return {
+                    value: continent,
+                    label: continent
+                };
+
+            }),
+
+            "Sélectionner un continent"
+        );
+
+
+        continentSel.disabled = false;
+
+
+        status(
+            dotC,
+            msgC,
+            "success",
+            COUNTRIES.length +
+            " pays disponibles"
+        );
+
+    }
+
+
+    /* =========================================================
+       CHANGEMENT DE CONTINENT
+    ========================================================= */
+
+    continentSel.addEventListener(
+        "change",
+        function () {
+
+            uniSel.disabled = true;
+
+            fill(
+                uniSel,
+                [],
+                "Choisissez d'abord un pays"
+            );
+
+
+            status(
+                dotU,
+                msgU,
+                "",
+                "En attente de la sélection du pays"
+            );
+
+
+            if (!continentSel.value) {
+
+                paysSel.disabled = true;
+
+                fill(
+                    paysSel,
+                    [],
+                    "Choisissez d'abord un continent"
+                );
+
+                return;
+            }
+
+
+            var list =
+                COUNTRIES
+                    .filter(function (country) {
+
+                        return (
+                            country.continent ===
+                            continentSel.value
+                        );
+
+                    })
+                    .sort(function (a, b) {
+
+                        return a.name.localeCompare(
+                            b.name,
+                            "fr"
+                        );
+
+                    });
+
+
+            fill(
+                paysSel,
+
+                list.map(function (country) {
+
+                    return {
+                        value: country.name,
+                        label: country.name
+                    };
+
+                }),
+
+                "Sélectionner un pays"
+            );
+
+
+            paysSel.disabled = false;
+
+        }
+    );
+
+
+    /* =========================================================
+       API UNIVERSITÉS
+    ========================================================= */
+
+    var UNIS_URL =
+        "https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json";
+
+
+    var unisCache = null;
+
+
+    function fetchJSON(url) {
+
+        var controller =
+            new AbortController();
+
+
+        var timeout =
+            setTimeout(function () {
+
+                controller.abort();
+
+            }, 20000);
+
+
+        return fetch(
+            url,
+            {
+                signal: controller.signal,
+                headers: {
+                    accept: "application/json"
+                }
+            }
+        )
+
+        .then(function (response) {
+
+            clearTimeout(timeout);
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "HTTP " + response.status
+                );
+
+            }
+
+
+            return response.json();
+
+        });
+
+    }
+
+
+    function loadAllUniversities() {
+
+        if (unisCache) {
+
+            return Promise.resolve(
+                unisCache
+            );
+
+        }
+
+
+        return fetchJSON(UNIS_URL)
+
+            .then(function (json) {
+
+                unisCache = json;
+
+                return json;
+
+            });
+
+    }
+
+
+    /* =========================================================
+       NOM DES PAYS POUR L'API UNIVERSITÉS
+    ========================================================= */
+
+    var API_COUNTRY_NAMES = {
+
+        "Afrique du Sud": "South Africa",
+        "Algérie": "Algeria",
+        "Angola": "Angola",
+        "Bénin": "Benin",
+        "Botswana": "Botswana",
+        "Burkina Faso": "Burkina Faso",
+        "Burundi": "Burundi",
+        "Cabo Verde": "Cape Verde",
+        "Cameroun": "Cameroon",
+        "Comores": "Comoros",
+        "Congo": "Congo",
+        "Côte d'Ivoire": "Ivory Coast",
+        "Djibouti": "Djibouti",
+        "Égypte": "Egypt",
+        "Érythrée": "Eritrea",
+        "Eswatini": "Eswatini",
+        "Éthiopie": "Ethiopia",
+        "Gabon": "Gabon",
+        "Gambie": "Gambia",
+        "Ghana": "Ghana",
+        "Guinée": "Guinea",
+        "Guinée-Bissau": "Guinea-Bissau",
+        "Guinée équatoriale": "Equatorial Guinea",
+        "Kenya": "Kenya",
+        "Lesotho": "Lesotho",
+        "Liberia": "Liberia",
+        "Libye": "Libya",
+        "Madagascar": "Madagascar",
+        "Malawi": "Malawi",
+        "Mali": "Mali",
+        "Maroc": "Morocco",
+        "Maurice": "Mauritius",
+        "Mauritanie": "Mauritania",
+        "Mozambique": "Mozambique",
+        "Namibie": "Namibia",
+        "Niger": "Niger",
+        "Nigeria": "Nigeria",
+        "Ouganda": "Uganda",
+        "République centrafricaine": "Central African Republic",
+        "République démocratique du Congo": "Democratic Republic of the Congo",
+        "Rwanda": "Rwanda",
+        "Sao Tomé-et-Principe": "Sao Tome and Principe",
+        "Sénégal": "Senegal",
+        "Seychelles": "Seychelles",
+        "Sierra Leone": "Sierra Leone",
+        "Somalie": "Somalia",
+        "Soudan": "Sudan",
+        "Soudan du Sud": "South Sudan",
+        "Tanzanie": "Tanzania",
+        "Tchad": "Chad",
+        "Togo": "Togo",
+        "Tunisie": "Tunisia",
+        "Zambie": "Zambia",
+        "Zimbabwe": "Zimbabwe",
+
+        "Canada": "Canada",
+        "États-Unis": "United States",
+        "Mexique": "Mexico",
+
+        "Argentine": "Argentina",
+        "Bolivie": "Bolivia",
+        "Brésil": "Brazil",
+        "Chili": "Chile",
+        "Colombie": "Colombia",
+        "Équateur": "Ecuador",
+        "Guyana": "Guyana",
+        "Paraguay": "Paraguay",
+        "Pérou": "Peru",
+        "Suriname": "Suriname",
+        "Uruguay": "Uruguay",
+        "Venezuela": "Venezuela",
+
+        "Albanie": "Albania",
+        "Allemagne": "Germany",
+        "Andorre": "Andorra",
+        "Autriche": "Austria",
+        "Belgique": "Belgium",
+        "Biélorussie": "Belarus",
+        "Bosnie-Herzégovine": "Bosnia and Herzegovina",
+        "Bulgarie": "Bulgaria",
+        "Chypre": "Cyprus",
+        "Croatie": "Croatia",
+        "Danemark": "Denmark",
+        "Espagne": "Spain",
+        "Estonie": "Estonia",
+        "Finlande": "Finland",
+        "France": "France",
+        "Grèce": "Greece",
+        "Hongrie": "Hungary",
+        "Irlande": "Ireland",
+        "Islande": "Iceland",
+        "Italie": "Italy",
+        "Lettonie": "Latvia",
+        "Liechtenstein": "Liechtenstein",
+        "Lituanie": "Lithuania",
+        "Luxembourg": "Luxembourg",
+        "Macédoine du Nord": "North Macedonia",
+        "Malte": "Malta",
+        "Moldavie": "Moldova",
+        "Monaco": "Monaco",
+        "Monténégro": "Montenegro",
+        "Norvège": "Norway",
+        "Pays-Bas": "Netherlands",
+        "Pologne": "Poland",
+        "Portugal": "Portugal",
+        "République tchèque": "Czech Republic",
+        "Roumanie": "Romania",
+        "Royaume-Uni": "United Kingdom",
+        "Russie": "Russia",
+        "Saint-Marin": "San Marino",
+        "Serbie": "Serbia",
+        "Slovaquie": "Slovakia",
+        "Slovénie": "Slovenia",
+        "Suède": "Sweden",
+        "Suisse": "Switzerland",
+        "Ukraine": "Ukraine",
+        "Vatican": "Vatican City",
+
+        "Afghanistan": "Afghanistan",
+        "Arabie saoudite": "Saudi Arabia",
+        "Arménie": "Armenia",
+        "Azerbaïdjan": "Azerbaijan",
+        "Bahreïn": "Bahrain",
+        "Bangladesh": "Bangladesh",
+        "Bhoutan": "Bhutan",
+        "Brunei": "Brunei",
+        "Cambodge": "Cambodia",
+        "Chine": "China",
+        "Corée du Nord": "North Korea",
+        "Corée du Sud": "South Korea",
+        "Émirats arabes unis": "United Arab Emirates",
+        "Géorgie": "Georgia",
+        "Inde": "India",
+        "Indonésie": "Indonesia",
+        "Irak": "Iraq",
+        "Iran": "Iran",
+        "Israël": "Israel",
+        "Japon": "Japan",
+        "Jordanie": "Jordan",
+        "Kazakhstan": "Kazakhstan",
+        "Kirghizistan": "Kyrgyzstan",
+        "Koweït": "Kuwait",
+        "Laos": "Laos",
+        "Liban": "Lebanon",
+        "Malaisie": "Malaysia",
+        "Maldives": "Maldives",
+        "Mongolie": "Mongolia",
+        "Myanmar": "Myanmar",
+        "Népal": "Nepal",
+        "Oman": "Oman",
+        "Ouzbékistan": "Uzbekistan",
+        "Pakistan": "Pakistan",
+        "Palestine": "Palestine",
+        "Philippines": "Philippines",
+        "Qatar": "Qatar",
+        "Singapour": "Singapore",
+        "Sri Lanka": "Sri Lanka",
+        "Syrie": "Syria",
+        "Tadjikistan": "Tajikistan",
+        "Taïwan": "Taiwan",
+        "Thaïlande": "Thailand",
+        "Timor oriental": "Timor-Leste",
+        "Turkménistan": "Turkmenistan",
+        "Turquie": "Turkey",
+        "Viêt Nam": "Vietnam",
+        "Yémen": "Yemen",
+
+        "Australie": "Australia",
+        "Fidji": "Fiji",
+        "Kiribati": "Kiribati",
+        "Îles Marshall": "Marshall Islands",
+        "Micronésie": "Micronesia",
+        "Nauru": "Nauru",
+        "Nouvelle-Zélande": "New Zealand",
+        "Palaos": "Palau",
+        "Papouasie-Nouvelle-Guinée": "Papua New Guinea",
+        "Samoa": "Samoa",
+        "Îles Salomon": "Solomon Islands",
+        "Tonga": "Tonga",
+        "Tuvalu": "Tuvalu",
+        "Vanuatu": "Vanuatu"
+
+    };
+
+
+    /* =========================================================
+       CHANGEMENT DE PAYS
+    ========================================================= */
+
+    paysSel.addEventListener(
+        "change",
+        function () {
+
+            if (!paysSel.value) {
+
+                uniSel.disabled = true;
+
+                fill(
+                    uniSel,
+                    [],
+                    "Choisissez d'abord un pays"
+                );
+
+                status(
+                    dotU,
+                    msgU,
+                    "",
+                    "En attente de la sélection du pays"
+                );
+
+                return;
+            }
+
+
+            var selectedCountry =
+                paysSel.value;
+
+
+            var apiCountry =
+                API_COUNTRY_NAMES[
+                    selectedCountry
+                ] || selectedCountry;
+
+
+            uniSel.disabled = true;
+
+
+            fill(
+                uniSel,
+                [],
+                "Chargement des universités..."
+            );
+
+
+            status(
+                dotU,
+                msgU,
+                "loading",
+                "Recherche des universités de " +
+                selectedCountry +
+                "..."
+            );
+
+
+            loadAllUniversities()
+
+                .then(function (all) {
+
+
+                    var list =
+                        all
+
+                            .filter(function (university) {
+
+                                var country =
+                                    (
+                                        university.country ||
+                                        ""
+                                    ).toLowerCase();
+
+                                return (
+                                    country ===
+                                    apiCountry.toLowerCase()
+                                );
+
+                            })
+
+
+                            .map(function (university) {
+
+                                return {
+                                    value:
+                                        university.name,
+
+                                    label:
+                                        university.name
+                                };
+
+                            })
+
+
+                            .filter(function (university, index, array) {
+
+                                return (
+                                    array.findIndex(
+                                        function (item) {
+
+                                            return (
+                                                item.value ===
+                                                university.value
+                                            );
+
+                                        }
+                                    ) === index
+                                );
+
+                            })
+
+
+                            .sort(function (a, b) {
+
+                                return a.label.localeCompare(
+                                    b.label,
+                                    "fr"
+                                );
+
+                            });
+
+
+                    if (!list.length) {
+
+                        fill(
+                            uniSel,
+
+                            [
+                                {
+                                    value:
+                                        "Autre université",
+
+                                    label:
+                                        "Autre université (à préciser)"
+                                }
+                            ],
+
+                            "Sélectionner une université"
+                        );
+
+
+                        uniSel.disabled = false;
+
+
+                        status(
+                            dotU,
+                            msgU,
+                            "error",
+                            "Aucune université trouvée automatiquement pour " +
+                            selectedCountry
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    fill(
+                        uniSel,
+                        list,
+                        "Sélectionner une université"
+                    );
+
+
+                    uniSel.disabled = false;
+
+
+                    status(
+                        dotU,
+                        msgU,
+                        "success",
+                        list.length +
+                        " université(s) trouvée(s)"
+                    );
+
+                })
+
+
+                .catch(function (error) {
+
+                    console.error(
+                        "Erreur universités :",
+                        error
+                    );
+
+
+                    fill(
+                        uniSel,
+
+                        [
+                            {
+                                value:
+                                    "Autre université",
+
+                                label:
+                                    "Autre université (à préciser)"
+                            }
+                        ],
+
+                        "Sélectionner une université"
+                    );
+
+
+                    uniSel.disabled = false;
+
+
+                    status(
+                        dotU,
+                        msgU,
+                        "error",
+                        "Impossible de charger les universités. Vous pouvez sélectionner une autre université."
+                    );
+
+                });
+
+        }
+    );
+
+
+    /* =========================================================
+       SOUMISSION
+    ========================================================= */
+
+    document
+        .getElementById("applicationForm")
+        .addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+
+                if (!validateStep(4)) {
+
+                    return;
+
+                }
+
+
+                var accept =
+                    document.getElementById("accept");
+
+
+                if (!accept.checked) {
+
+                    alert(
+                        "Veuillez accepter le traitement de vos informations."
+                    );
+
+                    return;
+
+                }
+
+
+                var form =
+                    e.target;
+
+
+                var data =
+                    new FormData(form);
+
+
+                console.log(
+                    "Candidature :",
+                    Object.fromEntries(
+                        data.entries()
+                    )
+                );
+
+
+                var prenom =
+                    data.get("prenom") || "";
+
+
+                var nom =
+                    data.get("nom") || "";
+
+
+                document
+                    .getElementById("successName")
+                    .textContent =
+                    prenom + " " + nom;
+
+
+                form.style.display =
+                    "none";
+
+
+                document
+                    .getElementById("steps")
+                    .style.display =
+                    "none";
+
+
+                document
+                    .getElementById("successBox")
+                    .classList.add("active");
+
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+        );
+
+
+    /* =========================================================
+       INITIALISATION
+    ========================================================= */
+
+    renderContinents();
+
+
+    console.log(
+        "🌍 " +
+        COUNTRIES.length +
+        " pays chargés."
+    );
+
+})();
+
+</script>
+
+</body>
+
+</html>
